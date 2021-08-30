@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class \TravelPackageRequest extends FormRequest
+class TravelPackageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,7 +33,7 @@ class \TravelPackageRequest extends FormRequest
             'departure_date' => 'required|date',
             'duration' => 'required|max:255',
             'type' => 'required|max:255',
-            'price' => 'required|integer',
+            'price' => 'required|integer'
         ];
     }
 }
