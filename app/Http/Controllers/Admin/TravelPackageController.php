@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TravelPackageRequest;
 use App\TravelPackage;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
+=======
+>>>>>>> abe3b0dee89a78cb439dabead9b80131310c7cbf
 
 class TravelPackageController extends Controller
 {
@@ -40,6 +43,7 @@ class TravelPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function store(TravelPackageRequest $request)
     {
         $data = $request->all();
@@ -47,6 +51,11 @@ class TravelPackageController extends Controller
 
         TravelPackage::create($data);
         return redirect()->route('travel-package.index');
+=======
+    public function store(Request $request)
+    {
+        //
+>>>>>>> abe3b0dee89a78cb439dabead9b80131310c7cbf
     }
 
     /**
@@ -68,11 +77,15 @@ class TravelPackageController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< HEAD
         $item = TravelPackage::findOrFail($id);
 
         return view('pages.admin.travel-package.edit', [
             'item' => $item
         ]);
+=======
+        //
+>>>>>>> abe3b0dee89a78cb439dabead9b80131310c7cbf
     }
 
     /**
@@ -82,6 +95,7 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(TravelPackageRequest $request, $id)
     {
         $data = $request->all();
@@ -92,6 +106,11 @@ class TravelPackageController extends Controller
         $item->update($data);
         
         return redirect()->route('travel-package.index');
+=======
+    public function update(Request $request, $id)
+    {
+        //
+>>>>>>> abe3b0dee89a78cb439dabead9b80131310c7cbf
     }
 
     /**
@@ -102,10 +121,14 @@ class TravelPackageController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
         $item = TravelPackage::findOrFail($id);
         
         $item->delete();
 
         return redirect()->route('travel-package.index');
+=======
+        //
+>>>>>>> abe3b0dee89a78cb439dabead9b80131310c7cbf
     }
 }
