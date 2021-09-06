@@ -20,7 +20,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
+                            <th>Travel</th>
                             <th>Location</th>
                             <th>Type</th>
                             <th>Departure Date</th>
