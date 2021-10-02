@@ -25,7 +25,9 @@ class CheckoutController extends Controller
 
     public function process(Request $request, $id)
     {
-        $travel_package = Transaction::create([
+        $travel_package = TravelPackage::findOrFail($id);
+
+        $transaction = Transaction::create([
             'travel_packages_id' => $id,
             'users_id' => Auth::user()->id,
             'additional_visa' => 0,
@@ -34,7 +36,7 @@ class CheckoutController extends Controller
         ]);
 
         TransactionDetail::create([
-            'transaction_id' => $transaction->id,
+            'transactions_id' => $transaction->id,
             'username' => Auth::user()->username,
             'nationality' => 'ID',
             'is_visa' => false,
@@ -61,7 +63,7 @@ class CheckoutController extends Controller
         $transaction->save();
         $item->delete();
 
-        return redirect()->route('checkout', $item->transaction_id)
+        return redirect()->route('checkout', $item->transaction_id);
     }
 
     public function create(Request $request, $id)
