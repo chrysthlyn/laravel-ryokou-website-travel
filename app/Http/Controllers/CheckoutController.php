@@ -43,7 +43,9 @@ class CheckoutController extends Controller
             'doe_passport' => Carbon::now()->addYears(5)
         ]);
 
+
         return redirect()->route('checkout', $transaction->id);
+        
     }
 
     public function remove(Request $request, $detail_id)
@@ -51,7 +53,7 @@ class CheckoutController extends Controller
         $item = TransactionDetail::findorFail($detail_id);
 
         $transaction = Transaction::with(['details', 'travel_package'])
-            ->findOrFail($item->transaction_id);
+            ->findOrFail($item->transactions_id);
 
         if($item->is_visa)
         {
@@ -63,7 +65,7 @@ class CheckoutController extends Controller
         $transaction->save();
         $item->delete();
 
-        return redirect()->route('checkout', $item->transaction_id);
+        return redirect()->route('checkout', $item->transactions_id);
     }
 
     public function create(Request $request, $id)
@@ -75,9 +77,9 @@ class CheckoutController extends Controller
         ]);
 
         $data = $request->all();
-        $data['transaction_id'] = $id;
+        $data['transactions_id'] = $id;
 
-        TransactionDetail::created($data);
+        TransactionDetail::create($data);
 
         $transaction = Transaction::with(['travel_package'])->find($id);
 
